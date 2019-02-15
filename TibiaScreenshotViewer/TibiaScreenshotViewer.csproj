@@ -29,8 +29,9 @@
     <ErrorReportUrl>https://github.com/Br-ian/tibia-screenshot-viewer/issues/</ErrorReportUrl>
     <ProductName>Tibia Screenshot Viewer</ProductName>
     <PublisherName>Brian</PublisherName>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -163,8 +164,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="TibiaScreenshotViewer_1_TemporaryKey.pfx" />
-    <None Include="TibiaScreenshotViewer_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
