@@ -70,10 +70,11 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>083A04A31F1CE472ECCCFDB54E5B0081C9AA297B</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>986FCE67C2367D7CB74A439C567743D42074A0F6</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>TibiaScreenshotViewer_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -162,6 +163,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="TibiaScreenshotViewer_1_TemporaryKey.pfx" />
     <None Include="TibiaScreenshotViewer_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
