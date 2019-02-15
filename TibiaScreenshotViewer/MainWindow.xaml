@@ -1,0 +1,83 @@
+﻿<Window x:Name="TibiaScreenshotViewerWindow" x:Class="TibiaScreenshotViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TibiaScreenshotViewer"
+        mc:Ignorable="d"
+        Title="Tibia Screenshot Viewer" Height="786" Width="1024" MinWidth="800" MinHeight="600" Background="{DynamicResource {x:Static SystemColors.MenuBrushKey}}" Loaded="MainWindow_Loaded">
+    <Window.CommandBindings>
+        <CommandBinding Command="Refresh"  Executed="ReloadCommand_Executed"/>
+        <CommandBinding Command="Open" Executed="OpenCommand_Executed"/>
+        <CommandBinding Command="Copy" Executed="CopyCommand_Executed"/>
+        <CommandBinding Command="Delete" Executed="DeleteCommand_Executed"/>
+        <CommandBinding Command="local:RoutedCommands.Exit"  Executed="ExitCommand_Executed"/>
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Key="Q" Modifiers="Control" Command="local:RoutedCommands.Exit"/>
+    </Window.InputBindings>
+    <DockPanel>
+        <StatusBar DockPanel.Dock="Bottom" Background="#FF0284A8" Foreground="White" Height="22">
+            <StatusBarItem>
+                <TextBlock x:Name="StatusBarText" Padding="5,0,0,0">Ready</TextBlock>
+            </StatusBarItem>
+            <StatusBarItem>
+                <ProgressBar x:Name="StatusBarProgressBar" Visibility="Hidden" Height="15" Width="150"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock x:Name="CountText" Padding="0,0,5,0">0 Screenshots</TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+        <Menu x:Name="MenuBar" DockPanel.Dock="Top" Background="#FF0284A8" Foreground="White" Height="22">
+            <MenuItem Header="_File" Height="22" Foreground="White">
+                <MenuItem x:Name="ReloadItem" Header="_Reload" Command="Refresh" Foreground="Black"/>
+                <Separator />
+                <MenuItem Header="Set _Tibia Folder" Click="SetTibiaFolderItem_Click" Foreground="Black"/>
+                <MenuItem Header="Set _Sync Folder" Click="SetSyncFolderItem_Click" Foreground="Black"/>
+                <MenuItem Header="Set _Default Folder" Click="SetDefaultFolderItem_Click" Foreground="Black"/>
+                <Separator />
+                <MenuItem Header="Sync _Now" Click="SyncItem_Click" Foreground="Black"/>
+                <MenuItem x:Name="SyncOnStartItem" Header="Sync _On Start" Click="SyncOnStartItem_Click" Foreground="Black"/>
+                <Separator />
+                <MenuItem x:Name="ResetItem" Header="_Reset Settings" Click="ResetItem_Click" Foreground="Black"/>
+                <Separator />
+                <MenuItem Header="E_xit" Command="local:RoutedCommands.Exit" Foreground="Black"/>
+            </MenuItem>
+            <MenuItem x:Name="EditMenuItem"  Header="_Edit" Height="22" Foreground="White" IsEnabled="false">
+                <MenuItem x:Name="OpenItem" Header="_Open" Foreground="Black" Command="Open"/>
+                <MenuItem x:Name="CopyItem" Header="_Copy" Foreground="Black" Command="Copy"/>
+                <MenuItem x:Name="Delete" Header="_Delete" Foreground="Black" Command="Delete"/>
+            </MenuItem>
+            <MenuItem Header="_Help" Height="22" Foreground="White">
+                <MenuItem x:Name="ReportItem" Header="Report _Issue" Foreground="Black" Click="ReportItem_Click"/>
+                <MenuItem x:Name="AboutItem" Header="_About" Click="AboutItem_Click" Foreground="Black"/>
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <!-- <ColumnDefinition Width="Auto"/> -->
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TreeView Grid.Row="0" Grid.Column="0" x:Name="TibiaTreeView" MinWidth="100" Padding="0,0,10,0" Margin="5,5,5,5" SelectedItemChanged="TibiaTreeView_OnSelectedItemChangedTreeView_OnSelectedItemChanged"/>
+            <!-- <GridSplitter Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Stretch" ResizeBehavior="PreviousAndNext" Width="5" /> -->
+            <Grid Grid.Row="0" Grid.Column="1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label x:Name="DescriptionLabel" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
+                <Image Grid.Row="1" Grid.Column="0" x:Name="ScreenshotImage" Margin="0,5,5,5" Cursor="Hand" MouseLeftButtonDown="ScreenshotImage_MouseLeftButtonDown">
+                    <Image.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="_Open" Command="Open"/>
+                            <MenuItem Header="_Copy" Command="Copy"/>
+                            <MenuItem Header="_Delete" Command="Delete"/>
+                        </ContextMenu>
+                    </Image.ContextMenu>
+                </Image>
+            </Grid>
+        </Grid>
+    </DockPanel>
+</Window>
+
